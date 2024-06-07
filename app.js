@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { analyzeJavaScriptCode } = require('./PyComponent');
+const { analyzePythonCode } = require('./PyComponent');
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,7 +11,7 @@ app.post('/analyze', (req, res) => {
         return res.status(400).json({ error: 'Please provide code to analyze' });
     }
 
-    const result = analyzeJavaScriptCode(code);
+    const result = analyzePythonCode(code);
     return res.status(200).send(result);
 });
 
